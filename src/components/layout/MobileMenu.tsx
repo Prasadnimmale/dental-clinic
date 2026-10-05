@@ -217,8 +217,6 @@ export function MobileMenu({ open, onClose, pathname }: MobileMenuProps) {
                   </dt>
                   <dd className="text-ink-600">
                     Mon – Sat: 9:00 AM – 8:00 PM
-                    <br />
-                    Sunday: 10:00 AM – 2:00 PM
                   </dd>
                 </div>
                 <div className="flex gap-3">
