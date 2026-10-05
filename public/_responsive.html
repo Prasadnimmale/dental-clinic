@@ -1,0 +1,137 @@
+<!doctype html>
+<!-- TEMPORARY responsive QA harness. Delete before delivery. -->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>responsive harness</title>
+    <style>
+      * { box-sizing: border-box; }
+      body { margin: 0; padding: 12px; display: flex; flex-direction: column; gap: 12px; background: #111; }
+      iframe { flex: none; border: 0; display: block; background: #fff; }
+    </style>
+  </head>
+  <body>
+    <script>
+      const params = new URLSearchParams(location.search);
+      const routes = (params.get("p") || "/").split(",");
+      const widths = (params.get("w") || "360,768").split(",").map(Number);
+      const results = { done: false, widths: [] };
+
+      window.__results = results;
+
+      const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+      function inspect(win, requested) {
+        const doc = win.document;
+        const offenders = [];
+        const clientW = doc.documentElement.clientWidth;
+        const scrollW = doc.documentElement.scrollWidth;
+        const overflowBy = Math.max(0, scrollW - clientW);
+        doc.querySelectorAll("body *").forEach((el) => {
+          const r = el.getBoundingClientRect();
+          if (r.width === 0 && r.height === 0) return;
+          if (r.right > clientW + 1.5 || r.left < -1.5) {
+            const cs = win.getComputedStyle(el);
+            if (cs.position === "fixed" || cs.visibility === "hidden") return;
+            offenders.push(
+              (el.tagName.toLowerCase() +
+                (el.className && typeof el.className === "string"
+                  ? "." + el.className.split(" ").filter(Boolean).slice(0, 3).join(".")
+                  : "")) +
+                " [" +
+                Math.round(r.left) +
+                "→" +
+                Math.round(r.right) +
+                "]",
+            );
+          }
+        });
+
+        const clippedText = [];
+        doc.querySelectorAll("p, h1, h2, h3, h4, li, span, a, button, label, strong").forEach((el) => {
+          if (el.scrollWidth > el.clientWidth + 2 && el.clientWidth > 0) {
+            const cs = win.getComputedStyle(el);
+            if (cs.overflow === "visible" || cs.textOverflow === "ellipsis") {
+              clippedText.push(el.tagName.toLowerCase() + ":" + el.textContent.trim().slice(0, 28));
+            }
+          }
+        });
+
+        const broken = [];
+        const pending = [];
+        doc.querySelectorAll("img").forEach((img) => {
+          if (img.getAttribute("src") === null) return;
+          if (img.naturalWidth === 0) {
+            if (img.loading === "lazy") pending.push(img.getAttribute("src"));
+            else broken.push("no-src " + img.getAttribute("src"));
+          } else if (img.complete && img.naturalWidth === 0) {
+            broken.push(img.getAttribute("src"));
+          }
+        });
+
+        const nav = doc.querySelector("nav[aria-label='Main']");
+        const burger = doc.querySelector("header button[aria-controls]");
+        const cta = doc.querySelector("header a[href='/appointment']");
+        const disp = (el) => (el ? win.getComputedStyle(el).display + " w=" + Math.round(el.getBoundingClientRect().width) : "missing");
+
+        const headerImg = doc.querySelector("header img");
+        return {
+          requested,
+          frameW: win.innerWidth,
+          width: clientW,
+          scrollW,
+          overflowBy,
+          offenders: offenders.slice(0, 8),
+          clippedText: clippedText.slice(0, 6),
+          broken: broken.slice(0, 6),
+          pending: pending.length,
+          navDisplay: disp(nav),
+          hamburgerDisplay: disp(burger),
+          ctaDisplay: disp(cta),
+          headerLogo: headerImg
+            ? Math.round(headerImg.getBoundingClientRect().width) + "x" + Math.round(headerImg.getBoundingClientRect().height)
+            : "none",
+        };
+      }
+
+      (async () => {
+        for (const route of routes) {
+          for (const w of widths) {
+            const frame = document.createElement("iframe");
+            frame.width = w;
+            frame.height = 900;
+            frame.src = route;
+            frame.style.width = w + "px";
+            frame.style.height = "900px";
+            document.body.appendChild(frame);
+            await new Promise((res) => {
+              frame.addEventListener("load", res, { once: true });
+            });
+            const win = frame.contentWindow;
+            const doc = frame.contentDocument;
+            doc.documentElement.style.scrollBehavior = "auto";
+
+            // Walk the page so lazy images request and sections mount.
+            for (let y = 0; y < doc.body.scrollHeight; y += 700) {
+              win.scrollTo(0, y);
+              await sleep(140);
+            }
+            win.scrollTo(0, doc.body.scrollHeight);
+            await sleep(400);
+            await Promise.all(
+              [...doc.images]
+                .filter((i) => !i.complete)
+                .map((i) => new Promise((res) => { i.addEventListener("load", res, { once: true }); i.addEventListener("error", res, { once: true }); setTimeout(res, 2500); })),
+            );
+            win.scrollTo(0, 0);
+            await sleep(200);
+
+            results.widths.push(inspect(win, w));
+            await sleep(150);
+          }
+        }
+        results.done = true;
+      })();
+    </script>
+  </body>
+</html>
