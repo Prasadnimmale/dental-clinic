@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowRight, CalendarCheck, Sparkles, Star } from "lucide-react";
+import { ArrowRight, CalendarCheck, DoorOpen, Sparkles } from "lucide-react";
 import { Container } from "@/components/common/Container";
 import { ActionLink } from "@/components/common/Button";
 import { Eyebrow } from "@/components/common/Eyebrow";
@@ -115,29 +115,21 @@ export function Hero() {
                 </span>
                 <span className="text-sm text-ink-600">
                   <span className="block font-semibold text-ink-900">
-                    {siteConfig.stats.happyPatients} patients
+                    Open 6 days a week
                   </span>
-                  treated with care
+                  Mon – Sat, 9:00 AM – 8:00 PM
                 </span>
               </div>
 
               <div className="flex items-center gap-2">
-                <span className="flex text-mint-500">
-                  {Array.from({ length: 5 }, (_, index) => (
-                    <Star
-                      key={index}
-                      aria-hidden
-                      className="size-4"
-                      fill="currentColor"
-                      strokeWidth={0}
-                    />
-                  ))}
+                <span className="flex size-9 items-center justify-center rounded-full bg-gradient-brand-soft text-mint-700 ring-1 ring-mint-100">
+                  <DoorOpen aria-hidden className="size-4" />
                 </span>
                 <span className="text-sm text-ink-600">
                   <span className="block font-semibold text-ink-900">
-                    4.9 rating
+                    {siteConfig.stats.treatmentChairs} treatment rooms
                   </span>
-                  from our patients
+                  modern care, all under one roof
                 </span>
               </div>
 
