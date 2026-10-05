@@ -15,7 +15,7 @@ import { images } from "@/data/images";
 export const metadata: Metadata = {
   title: "Contact Us",
   description:
-    `Contact ${siteConfig.fullName} — address, phone, WhatsApp and email in Yendada, Visakhapatnam, Andhra Pradesh. Open Monday to Saturday 9 AM to 8 PM and Sunday 10 AM to 2 PM.`,
+    `Contact ${siteConfig.fullName} — address, phone, WhatsApp and email in Yendada, Visakhapatnam, Andhra Pradesh. Open Monday to Saturday 9 AM to 8 PM.`,
   alternates: { canonical: "/contact" },
   openGraph: {
     title: `Contact ${siteConfig.titleBrandName}`,
@@ -84,7 +84,7 @@ export default function ContactPage() {
         ]}
         highlights={[
           "Mon – Sat: 9:00 AM – 8:00 PM",
-          "Sunday: 10:00 AM – 2:00 PM",
+          "Closed Sunday",
           "Same-day emergency slots",
           "Free parking on site",
         ]}
