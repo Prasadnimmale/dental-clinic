@@ -96,12 +96,6 @@ const clinicSchema = {
       opens: "09:00",
       closes: "20:00",
     },
-    {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: "Sunday",
-      opens: "10:00",
-      closes: "14:00",
-    },
   ],
   aggregateRating: {
     "@type": "AggregateRating",
