@@ -3,9 +3,9 @@
 import { useState } from "react";
 import {
   AlertCircle,
+  ArrowRight,
   CalendarCheck,
   CheckCircle2,
-  Loader2,
   MessageSquare,
   Send,
 } from "lucide-react";
@@ -64,9 +64,8 @@ function validate(form: AppointmentFormData): AppointmentFormErrors {
 export function AppointmentForm() {
   const [form, setForm] = useState<AppointmentFormData>(emptyForm);
   const [errors, setErrors] = useState<AppointmentFormErrors>({});
-  const [status, setStatus] = useState<"idle" | "submitting" | "success">(
-    "idle",
-  );
+  const [status, setStatus] = useState<"idle" | "success" | "blocked">("idle");
+  const [whatsappUrl, setWhatsappUrl] = useState("");
 
   const update =
     (field: keyof AppointmentFormData) =>
@@ -81,7 +80,7 @@ export function AppointmentForm() {
       });
     };
 
-  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     const nextErrors = validate(form);
@@ -94,46 +93,86 @@ export function AppointmentForm() {
       return;
     }
 
-    setStatus("submitting");
+    const message = [
+      `Hello, I would like to request an appointment at ${siteConfig.brandName}.`,
+      "",
+      `Full name: ${form.fullName.trim()}`,
+      `Phone: ${form.phone.trim()}`,
+      `Email: ${form.email.trim() || "Not provided"}`,
+      `Service: ${form.service}`,
+      `Preferred date: ${formatDate(form.date)}`,
+      `Preferred time: ${form.time}`,
+      `Message: ${form.message.trim() || "None"}`,
+    ].join("\n");
+    const url = `https://wa.me/${siteConfig.contact.whatsapp}?text=${encodeURIComponent(message)}`;
 
-    // TODO: POST `form` to the clinic booking API / WhatsApp integration.
-    // Kept as a short simulated delay so the loading state is real, not decorative.
-    await new Promise((resolve) => setTimeout(resolve, 900));
-
-    setStatus("success");
+    setWhatsappUrl(url);
+    const whatsappWindow = window.open(url, "_blank");
+    if (whatsappWindow) {
+      whatsappWindow.opener = null;
+      setStatus("success");
+    } else {
+      setStatus("blocked");
+    }
   }
 
-  if (status === "success") {
+  if (status !== "idle") {
+    const opened = status === "success";
+
     return (
-      <div className="rounded-3xl border border-mint-200 bg-mint-50/70 p-8 text-center shadow-soft sm:p-10">
-        <span className="mx-auto flex size-16 items-center justify-center rounded-2xl bg-gradient-brand text-white shadow-brand-glow">
-          <CheckCircle2 aria-hidden className="size-8" />
+      <div
+        className={cn(
+          "rounded-3xl border p-8 text-center shadow-soft sm:p-10",
+          opened
+            ? "border-mint-200 bg-mint-50/70"
+            : "border-amber-200 bg-amber-50/70",
+        )}
+      >
+        <span
+          className={cn(
+            "mx-auto flex size-16 items-center justify-center rounded-2xl text-white shadow-brand-glow",
+            opened ? "bg-gradient-brand" : "bg-amber-500",
+          )}
+        >
+          {opened ? (
+            <CheckCircle2 aria-hidden className="size-8" />
+          ) : (
+            <AlertCircle aria-hidden className="size-8" />
+          )}
         </span>
 
         <h3 className="mt-6 text-2xl font-bold text-ink-900">
-          Request received, thank you
+          {opened
+            ? "Your appointment details are ready"
+            : "WhatsApp could not open automatically"}
         </h3>
 
         <p className="mx-auto mt-3 max-w-md text-base leading-relaxed text-ink-600">
-          We have your request for{" "}
-          <span className="font-semibold text-ink-900">{form.service}</span> on{" "}
-          <span className="font-semibold text-ink-900">
-            {form.date ? formatDate(form.date) : "your preferred date"}
-          </span>
-          . Our front desk will call or WhatsApp you on{" "}
-          <span className="font-semibold text-ink-900">{form.phone}</span> to
-          confirm the exact time.
+          {opened
+            ? "WhatsApp opened with all the details you entered. Please review the message and tap Send in WhatsApp to deliver your request to the clinic."
+            : "Your details are still here. Use the button below to open WhatsApp with your appointment message."}
         </p>
 
-        <p className="mt-4 text-sm text-ink-500">
-          Need it sooner? Call{" "}
+        <a
+          href={whatsappUrl}
+          target="_blank"
+          rel="noreferrer noopener"
+          className="mt-6 inline-flex items-center justify-center gap-2 rounded-full bg-gradient-brand px-6 py-3 text-sm font-semibold text-white shadow-brand-glow transition-[filter] hover:brightness-105"
+        >
+          Continue in WhatsApp
+          <ArrowRight aria-hidden className="size-4" />
+        </a>
+
+        <p className="mt-5 text-sm text-ink-500">
+          The clinic receives your request only after you tap Send in WhatsApp.
+          For urgent problems, call{" "}
           <a
             href={siteConfig.contact.phoneHref}
             className="font-semibold text-mint-700 underline underline-offset-4"
           >
             {siteConfig.contact.phone}
-          </a>{" "}
-          — we keep emergency slots open every day.
+          </a>
+          .
         </p>
 
         <button
@@ -141,6 +180,7 @@ export function AppointmentForm() {
           onClick={() => {
             setForm(emptyForm);
             setErrors({});
+            setWhatsappUrl("");
             setStatus("idle");
           }}
           className="mt-8 text-sm font-semibold text-mint-700 underline underline-offset-4 transition-colors hover:text-mint-800"
@@ -333,20 +373,10 @@ export function AppointmentForm() {
 
       <button
         type="submit"
-        disabled={status === "submitting"}
         className="mt-8 inline-flex w-full items-center justify-center gap-2.5 rounded-full bg-gradient-brand px-7 py-3.5 text-base font-semibold text-white shadow-brand-glow transition-[filter,box-shadow] duration-300 hover:brightness-105 disabled:cursor-not-allowed disabled:opacity-70"
       >
-        {status === "submitting" ? (
-          <>
-            <Loader2 aria-hidden className="size-4.5 animate-spin" />
-            Sending your request…
-          </>
-        ) : (
-          <>
-            <Send aria-hidden className="size-4.5" />
-            Request Appointment
-          </>
-        )}
+        <Send aria-hidden className="size-4.5" />
+        Request Appointment on WhatsApp
       </button>
 
       <p className="mt-4 flex items-start gap-2.5 text-xs leading-relaxed text-ink-500">
