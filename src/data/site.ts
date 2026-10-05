@@ -6,9 +6,9 @@ import type { NavLink, WorkingHours } from "@/types";
  */
 export const siteConfig = {
   /** Full clinic name, used in metadata and page copy. */
-  fullName: "Yendada You Care Multispeciality Dental Clinic",
+  fullName: " You Care Multispeciality Dental Clinic",
   /** Short name used in page titles and headings. */
-  brandName: "Yendada You Care",
+  brandName: " You Care",
   /** Short name used specifically in browser and social-share titles. */
   titleBrandName: "You Care",
   /**
@@ -20,10 +20,10 @@ export const siteConfig = {
   descriptor: "Multispeciality Dental Clinic",
   /** Path to the complete logo image used in header and footer. */
   logo: "/images/logo/you-care-multispeciality-dental-clinic.png",
-  legalName: "Yendada You Care Multispeciality Dental Clinic",
+  legalName: " You Care Multispeciality Dental Clinic",
   tagline: "Healthy Smile. Confident You.",
   description:
-    "Yendada You Care is a multispeciality dental clinic offering advanced dental treatments, dental implants, cosmetic dentistry, orthodontics and paediatric care delivered by experienced dental specialists in a modern, sterilised environment.",
+    " You Care is a multispeciality dental clinic offering advanced dental treatments, dental implants, cosmetic dentistry, orthodontics and paediatric care delivered by experienced dental specialists in a modern, sterilised environment.",
 
   /** Public base URL — used for canonical links, sitemap and Open Graph. */
   url: "https://www.yendadayoucare.com",
