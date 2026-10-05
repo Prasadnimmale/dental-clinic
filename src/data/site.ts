@@ -72,7 +72,6 @@ export const siteConfig = {
 
 export const workingHours: WorkingHours[] = [
   { day: "Monday – Saturday", hours: "9:00 AM – 8:00 PM" },
-  { day: "Sunday", hours: "10:00 AM – 2:00 PM" },
 ];
 
 /** Emergency / holiday note shown on the contact page. */
