@@ -74,7 +74,7 @@ export default function ContactPage() {
         title={
           <>
             Contact{" "}
-            <span className="text-gradient-brand">Yendada You Care</span>
+            <span className="text-gradient-brand">{siteConfig.titleBrandName}</span>
           </>
         }
         description="Call, WhatsApp, email or simply walk in. We answer every message ourselves — there is no call centre between you and the dentist."
