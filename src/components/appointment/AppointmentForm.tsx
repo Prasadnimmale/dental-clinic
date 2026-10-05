@@ -243,7 +243,7 @@ export function AppointmentForm() {
             type="tel"
             inputMode="tel"
             autoComplete="tel"
-            placeholder="+91 98765 43210"
+            placeholder="Enter your number"
             value={form.phone}
             onChange={update("phone")}
             aria-invalid={Boolean(errors.phone)}
