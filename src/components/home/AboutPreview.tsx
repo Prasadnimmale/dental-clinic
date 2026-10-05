@@ -59,19 +59,6 @@ export function AboutPreview() {
               </div>
             </div>
 
-            {/* Stat chip */}
-            <div className="absolute -bottom-5 left-4 flex items-center gap-3 rounded-2xl border border-ink-100 bg-white px-5 py-4 shadow-lift sm:left-8">
-              <span className="font-feature-settings-grud bg-gradient-brand bg-clip-text text-3xl font-bold text-transparent">
-                {siteConfig.stats.yearsOfCare}
-              </span>
-              <span className="text-sm leading-tight text-ink-600">
-                Years caring for
-                <br />
-                <span className="font-semibold text-ink-900">
-                  {siteConfig.address.district}
-                </span>
-              </span>
-            </div>
           </Reveal>
 
           {/* --- Narrative --- */}
