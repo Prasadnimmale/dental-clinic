@@ -40,7 +40,7 @@ export function PageHero({
       />
 
       <Container className="relative">
-        <Breadcrumb items={crumbs} tone="dark" className="text-ink-600" />
+        <Breadcrumb items={crumbs} />
 
         <div className="mt-6 max-w-3xl">
           <p className="inline-flex items-center gap-2 rounded-full bg-white/80 px-3.5 py-1.5 text-[0.7rem] font-semibold tracking-[0.14em] text-mint-700 uppercase ring-1 ring-mint-200/80 backdrop-blur-sm">
