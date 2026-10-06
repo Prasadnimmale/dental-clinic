@@ -15,7 +15,7 @@ import { siteConfig } from "@/data/site";
 export const metadata: Metadata = {
   title: "Dental Services",
   description:
-    "General dentistry, dental implants, root canal treatment, orthodontics, cosmetic dentistry, teeth whitening, paediatric dentistry and oral surgery — all available at Yendada You Care, Yendada.",
+    "General dentistry, dental implants, root canal treatment, orthodontics, cosmetic dentistry, teeth whitening, paediatric dentistry and oral surgery — all available at You Care, Yendada.",
   alternates: { canonical: "/services" },
   openGraph: {
     title: `Dental Services | ${siteConfig.titleBrandName}`,
