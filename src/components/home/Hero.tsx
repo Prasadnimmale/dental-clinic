@@ -148,7 +148,16 @@ export function Hero() {
             </div>
           </motion.div>
 
-          <div className="relative mx-auto flex w-full max-w-[36rem] items-center justify-center md:col-span-5 lg:col-span-6">
+          <motion.div
+            className="relative mx-auto flex w-full max-w-[36rem] items-center justify-center md:col-span-5 lg:col-span-6"
+            initial={prefersReducedMotion ? false : { opacity: 0, x: 32 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{
+              duration: 0.7,
+              delay: 0.1,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+          >
             <div
               aria-hidden
               className="pointer-events-none absolute inset-[12%] rounded-full bg-gradient-brand-soft blur-3xl"
@@ -157,7 +166,7 @@ export function Hero() {
               alt="Happy tooth mascot representing You Care Multispeciality Dental Clinic"
               className="w-full"
             />
-          </div>
+          </motion.div>
         </div>
       </Container>
     </section>
