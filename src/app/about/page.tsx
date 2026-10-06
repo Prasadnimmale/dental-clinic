@@ -16,7 +16,7 @@ import { testimonials } from "@/data/testimonials";
 export const metadata: Metadata = {
   title: "About Our Dental Clinic",
   description:
-    "Learn how Yendada You Care Multispeciality Dental Clinic has cared for families in Yendada and Visakhapatnam for over 15 years — our specialists, our technology and our approach to patient comfort.",
+    "Learn how You Care Multispeciality Dental Clinic has cared for families in Yendada and Visakhapatnam for over 15 years — our specialists, our technology and our approach to patient comfort.",
   alternates: { canonical: "/about" },
   openGraph: {
     title: `About ${siteConfig.titleBrandName} | Multispeciality Dental Clinic`,
@@ -87,7 +87,7 @@ export default function AboutPage() {
             <span className="text-gradient-brand">how patients feel</span>
           </>
         }
-        description="Yendada You Care Multispeciality Dental Clinic has served Yendada and the wider Visakhapatnam area for over 15 years. We combine specialist dentistry with clear explanations and genuinely unhurried appointments."
+        description="You Care Multispeciality Dental Clinic has served Yendada and the wider Visakhapatnam area for over 15 years. We combine specialist dentistry with clear explanations and genuinely unhurried appointments."
         crumbs={[
           { label: "Home", href: "/" },
           { label: "About", href: "/about" },
