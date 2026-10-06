@@ -8,7 +8,7 @@ import "./globals.css";
 
 const title = `${siteConfig.titleBrandName} | Multispeciality Dental Clinic`;
 const description =
-  "Yendada You Care is a multispeciality dental clinic offering advanced dental treatments, dental implants, cosmetic dentistry, orthodontics and paediatric care from experienced dental specialists in a modern, sterilised environment.";
+  "You Care is a multispeciality dental clinic offering advanced dental treatments, dental implants, cosmetic dentistry, orthodontics and paediatric care from experienced dental specialists in a modern, sterilised environment.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -23,7 +23,8 @@ export const metadata: Metadata = {
   publisher: siteConfig.fullName,
   category: "Health",
   keywords: [
-    "Yendada",
+    "You Care Dental Clinic",
+    "dental clinic in Yendada",
     "Yendada dental clinic",
     "dental clinic",
     "multispeciality dental care",
