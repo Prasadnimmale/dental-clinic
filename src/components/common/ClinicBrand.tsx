@@ -27,17 +27,22 @@ export function ClinicBrand({ tone = "dark", className }: ClinicBrandProps) {
         className,
       )}
     >
-      {/* Original logo image — unchanged */}
+      {/* Original logo image — untouched on disk. `width`/`height` declare the
+          artwork's true intrinsic size (1849x851) so the browser can reserve the
+          correct box and derive the aspect ratio; CSS below owns the rendered
+          size. `h-auto` lets height follow that ratio instead of being pinned to
+          a second number, which is what keeps Next.js from reporting a
+          width/height mismatch. `sizes` is pinned to the rendered width so the
+          optimiser never ships a larger candidate than a logo needs. */}
       <Image
         src={siteConfig.logo}
         alt="You Care Multispeciality Dental Clinic"
-        width={110}
-        height={110}
+        width={1849}
+        height={851}
+        sizes="110px"
         priority
-        className="object-contain"
+        className="h-auto w-[110px] object-contain"
       />
-
-
     </Link>
   );
 }
