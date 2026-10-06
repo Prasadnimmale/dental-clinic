@@ -12,7 +12,7 @@ export const doctors: Doctor[] = [
     qualification: "BDS, MDS (Prosthodontics)",
     specialization: "Prosthodontist & Implantologist",
     experience: "16 years",
-    bio: "Dr. Mehta leads the implant and prosthetic team at Yendada You Care. He has restored over two thousand implants and complex full-mouth rehabilitations, with a special interest in predictable long-term implant planning.",
+    bio: "Dr. Mehta leads the implant and prosthetic team at You Care. He has restored over two thousand implants and complex full-mouth rehabilitations, with a special interest in predictable long-term implant planning.",
     focusAreas: [
       "Dental implants",
       "Full-mouth rehabilitation",
@@ -21,7 +21,7 @@ export const doctors: Doctor[] = [
     image: image(
       "doctors",
       "dr-arjun-mehta.jpg",
-      "Portrait of Dr. Arjun Mehta, prosthodontist and implantologist at Yendada You Care",
+      "Portrait of Dr. Arjun Mehta, prosthodontist and implantologist at You Care",
       "Dr. Arjun Mehta",
     ),
   },
@@ -36,7 +36,7 @@ export const doctors: Doctor[] = [
     image: image(
       "doctors",
       "dr-priya-sharma.jpg",
-      "Portrait of Dr. Priya Sharma, endodontist at Yendada You Care",
+      "Portrait of Dr. Priya Sharma, endodontist at You Care",
       "Dr. Priya Sharma",
     ),
   },
@@ -51,7 +51,7 @@ export const doctors: Doctor[] = [
     image: image(
       "doctors",
       "dr-rohit-verma.jpg",
-      "Portrait of Dr. Rohit Verma, orthodontist at Yendada You Care",
+      "Portrait of Dr. Rohit Verma, orthodontist at You Care",
       "Dr. Rohit Verma",
     ),
   },
@@ -66,7 +66,7 @@ export const doctors: Doctor[] = [
     image: image(
       "doctors",
       "dr-ananya-iyer.jpg",
-      "Portrait of Dr. Ananya Iyer, pediatric dentist at Yendada You Care",
+      "Portrait of Dr. Ananya Iyer, pediatric dentist at You Care",
       "Dr. Ananya Iyer",
     ),
   },
@@ -81,7 +81,7 @@ export const doctors: Doctor[] = [
     image: image(
       "doctors",
       "dr-vikram-reddy.jpg",
-      "Portrait of Dr. Vikram Reddy, oral and maxillofacial surgeon at Yendada You Care",
+      "Portrait of Dr. Vikram Reddy, oral and maxillofacial surgeon at You Care",
       "Dr. Vikram Reddy",
     ),
   },
@@ -96,7 +96,7 @@ export const doctors: Doctor[] = [
     image: image(
       "doctors",
       "dr-kavya-nair.jpg",
-      "Portrait of Dr. Kavya Nair, cosmetic dentist at Yendada You Care",
+      "Portrait of Dr. Kavya Nair, cosmetic dentist at You Care",
       "Dr. Kavya Nair",
     ),
   },
