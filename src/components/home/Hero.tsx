@@ -6,6 +6,7 @@ import { ArrowRight, CalendarCheck, DoorOpen, Sparkles } from "lucide-react";
 import { Container } from "@/components/common/Container";
 import { ActionLink } from "@/components/common/Button";
 import { Eyebrow } from "@/components/common/Eyebrow";
+import { DancingTooth } from "@/components/common/DancingTooth";
 import { images } from "@/data/images";
 import { siteConfig } from "@/data/site";
 
@@ -36,9 +37,9 @@ export function Hero() {
       />
 
       <Container className="relative">
-        <div className="grid items-center gap-8 py-10 sm:py-14 lg:min-h-[38rem] lg:grid-cols-12 lg:gap-8 lg:py-16 xl:gap-12">
+        <div className="grid items-center gap-8 py-10 sm:py-14 md:grid-cols-12 md:gap-8 lg:min-h-[38rem] lg:py-16 xl:gap-12">
           <motion.div
-            className="lg:col-span-6"
+            className="md:col-span-7 lg:col-span-6"
             initial={prefersReducedMotion ? false : { opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
@@ -147,44 +148,16 @@ export function Hero() {
             </div>
           </motion.div>
 
-          <motion.div
-            className="relative mx-auto flex w-full max-w-[36rem] items-center justify-center lg:col-span-6"
-            initial={prefersReducedMotion ? false : { opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{
-              duration: 0.8,
-              delay: prefersReducedMotion ? 0 : 0.12,
-              ease: [0.22, 1, 0.36, 1],
-            }}
-          >
+          <div className="relative mx-auto flex w-full max-w-[36rem] items-center justify-center md:col-span-5 lg:col-span-6">
             <div
               aria-hidden
               className="pointer-events-none absolute inset-[12%] rounded-full bg-gradient-brand-soft blur-3xl"
             />
-            <motion.div
-              className="relative w-full max-w-[22rem] sm:max-w-[26rem] lg:max-w-[30rem] xl:max-w-[36rem]"
-              animate={prefersReducedMotion ? undefined : { y: [0, -7, 0] }}
-              transition={
-                prefersReducedMotion
-                  ? undefined
-                  : {
-                      duration: 6,
-                      ease: "easeInOut",
-                      repeat: Infinity,
-                    }
-              }
-            >
-              <Image
-                src="/images/hero/hero-tooth.png"
-                alt="Happy tooth mascot representing You Care Multispeciality Dental Clinic"
-                width={850}
-                height={768}
-                preload
-                sizes="(max-width: 639px) 90vw, (max-width: 1023px) 80vw, (max-width: 1279px) 42vw, 544px"
-                className="h-auto w-full object-contain drop-shadow-[0_18px_30px_rgba(22,163,74,0.08)]"
-              />
-            </motion.div>
-          </motion.div>
+            <DancingTooth
+              alt="Happy tooth mascot representing You Care Multispeciality Dental Clinic"
+              className="w-full"
+            />
+          </div>
         </div>
       </Container>
     </section>
