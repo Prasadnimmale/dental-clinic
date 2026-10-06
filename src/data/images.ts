@@ -24,7 +24,7 @@ export const images = {
     main: img(
       "hero",
       "hero-main-treatment.jpg",
-      "Dental specialist examining a patient in a bright modern treatment room at Yendada You Care",
+      "Dental specialist examining a patient in a bright modern treatment room at You Care",
       "Every consultation begins with a careful look",
     ),
     consultation: img(
