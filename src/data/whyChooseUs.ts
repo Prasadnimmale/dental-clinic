@@ -8,7 +8,7 @@ import {
 } from "lucide-react";
 import type { FaqItem, FeatureItem } from "@/types";
 
-/** Why patients choose Yendada You Care — six cards, homepage + about page. */
+/** Why patients choose You Care — six cards, homepage + about page. */
 export const whyChooseUs: FeatureItem[] = [
   {
     title: "Specialists, Not Generalists",
@@ -51,7 +51,7 @@ export const whyChooseUs: FeatureItem[] = [
 /** Clinic-wide questions answered in the homepage FAQ accordion. */
 export const generalFaqs: FaqItem[] = [
   {
-    question: "What dental treatments do you offer at Yendada You Care?",
+    question: "What dental treatments do you offer at  You Care?",
     answer:
       "We are a multispeciality clinic and provide general dentistry, dental implants, root canal treatment, orthodontics, cosmetic dentistry, teeth whitening, paediatric dentistry and oral surgery. Many patients need more than one service, and we combine them into a single coordinated plan.",
   },
@@ -73,7 +73,7 @@ export const generalFaqs: FaqItem[] = [
   {
     question: "Is the clinic open on Sundays and late in the evening?",
     answer:
-      "We are open Monday to Saturday from 9:00 AM to 8:00 PM and Sundays from 10:00 AM to 2:00 PM, so weekend and evening appointments are available. Call our emergency line outside these hours for urgent problems.",
+      "We are open Monday to Saturday from 9:00 AM to 8:00 PM and closed on Sundays. Call our emergency line outside these hours for urgent problems.",
   },
   {
     question: "Do you provide emergency dental treatment?",
