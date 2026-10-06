@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Hero } from "@/components/home/Hero";
-import { TrustSection } from "@/components/home/TrustSection";
 import { AboutPreview } from "@/components/home/AboutPreview";
+import { DentalJourneySection } from "@/components/home/DentalJourneySection";
 import { ServicesPreview } from "@/components/home/ServicesPreview";
 import { TreatmentsSection } from "@/components/home/TreatmentsSection";
 import { DoctorsPreview } from "@/components/home/DoctorsPreview";
@@ -25,8 +25,8 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      <TrustSection />
       <AboutPreview />
+      <DentalJourneySection />
       <ServicesPreview />
       <TreatmentsSection />
       <DoctorsPreview />
