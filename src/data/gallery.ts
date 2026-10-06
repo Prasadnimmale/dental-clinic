@@ -15,7 +15,7 @@ export const galleryImages: GalleryImage[] = [
     ...image(
       "gallery",
       "gallery-clinic-interior.jpg",
-      "Bright, modern dental treatment room at Yendada You Care",
+      "Bright, modern dental treatment room at You Care",
       "Modern treatment room",
     ),
     category: "Clinic",
