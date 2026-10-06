@@ -22,7 +22,7 @@ export const services: Service[] = [
     summary:
       "Routine check-ups, digital diagnostics and preventive care to keep your teeth and gums healthy for life.",
     description:
-      "General dentistry is the foundation of good oral health. At Yendada You Care our dentists combine digital examination with X-ray imaging to catch problems early — when treatment is simplest and most affordable. From a routine cleaning to fillings, gum care and night guards, every visit is planned around your comfort and your long-term oral health.",
+      "General dentistry is the foundation of good oral health. At You Care our dentists combine digital examination with X-ray imaging to catch problems early — when treatment is simplest and most affordable. From a routine cleaning to fillings, gum care and night guards, every visit is planned around your comfort and your long-term oral health.",
     icon: Stethoscope,
     image: image(
       "services",
